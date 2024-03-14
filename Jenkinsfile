@@ -17,8 +17,14 @@ node {
     stage('Push image') {
         /* Finally, we'll push the image into Docker Hub */
 
-        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-            app.push("latest")
+withCredentials([usernamePassword( credentialsId: 'docker-hub-credentials', usernameVariable: 'marcoceccarini', passwordVariable: 'dckr_pat_9XUUqySFFHvp-b8rfID0EruUboE')]) {
+        def registry_url = "registry.hub.docker.com/"
+        bat "docker login -u $USER -p $PASSWORD ${registry_url}"
+        docker.withRegistry("http://${registry_url}", "docker-hub-credentials") {
+            // Push your image now
+                        app.push("latest")
+        }
+    
         }
     }
 }
