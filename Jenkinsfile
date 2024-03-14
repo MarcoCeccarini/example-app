@@ -1,8 +1,8 @@
 node {
     def app
 
-    def usernameVariable: 'marcoceccarini'
-    def passwordVariable: 'dckr_pat_9XUUqySFFHvp-b8rfID0EruUboE'
+    def usernameVariable= 'marcoceccarini'
+    def passwordVariable= 'dckr_pat_9XUUqySFFHvp-b8rfID0EruUboE'
         
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
